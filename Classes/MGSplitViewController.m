@@ -254,7 +254,12 @@
 	// Account for status bar, which always subtracts from the height (since it's always at the top of the screen).
 	height -= statusBarHeight;
 	height -= navigationBarHeight;
-	
+
+	// Account for the tab bar if we're in a tab controller
+	if (self.tabBarController.tabBar) {
+		height -= self.tabBarController.tabBar.frame.size.height;
+	}
+
 	return CGSizeMake(width, height);
 }
 
