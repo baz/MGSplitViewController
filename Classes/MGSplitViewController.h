@@ -30,6 +30,7 @@ typedef enum _MGSplitViewDividerStyle {
 	NSArray *_cornerViews; // Views to draw the inner rounded corners between master and detail views.
 	float _splitPosition;
 	BOOL _reconfigurePopup;
+	BOOL _showsCornerViews;
 	MGSplitViewDividerStyle _dividerStyle; // Meta-setting which configures several aspects of appearance and behaviour.
 }
 
@@ -41,6 +42,7 @@ typedef enum _MGSplitViewDividerStyle {
 @property (nonatomic, assign) float splitPosition; // starting position of split in pixels, relative to top/left (depending on .isVertical setting) if masterBeforeDetail is YES, else relative to bottom/right.
 @property (nonatomic, assign) float splitWidth; // width of split in pixels.
 @property (nonatomic, assign) BOOL allowsDraggingDivider; // whether to let the user drag the divider to alter the split position (default NO).
+@property (nonatomic, assign) BOOL showsCornerViews;  // whether to show the rounded corner views (default YES).
 
 @property (nonatomic, copy) NSArray *viewControllers; // array of UIViewControllers; master is at index 0, detail is at index 1.
 @property (nonatomic, retain) IBOutlet UIViewController *masterViewController; // convenience.
