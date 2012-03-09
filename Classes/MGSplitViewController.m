@@ -905,16 +905,15 @@
 	}
 }
 
-
-- (void)setSplitPosition:(float)posn animated:(BOOL)animate
+- (void)setSplitPosition:(float)posn animated:(BOOL)animate completion:(void (^)(BOOL finished))completion
 {
 	BOOL shouldAnimate = (animate && [self isShowingMaster]);
 	if (shouldAnimate) {
-		[UIView beginAnimations:@"SplitPosition" context:nil];
-	}
-	[self setSplitPosition:posn];
-	if (shouldAnimate) {
-		[UIView commitAnimations];
+		[UIView animateWithDuration:0.2 delay:0 options:0 animations:^{
+			[self setSplitPosition:posn];
+		} completion:completion];
+	} else {
+		[self setSplitPosition:posn];
 	}
 }
 
